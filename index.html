@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+
+  <title>Time | Weather</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #000000;
+      color: #dcdcdc;
+      margin: 20px;
+    }
+
+    h1, h2, p {
+      margin: 10px 0;
+    }
+
+    h3 {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-size: 70px;
+      margin-bottom: 10px;
+    }
+
+    #date {
+      font-size: 20px;
+      color: #bbbbbb;
+    }
+    
+    #am-pm{
+      font-size: large;
+    }
+
+    .main {
+      max-width: 800px;
+      margin: 50px auto;
+      margin-top: -550px;
+      padding: 30px;
+      background: #1c1c1c;
+      border-radius: 12px;
+    }
+
+    .time-container {
+      margin-bottom: 30px;
+    }
+
+    #day {
+      font-size: 25px;
+      color: #bbbbbb;
+    }
+
+    #weather-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    #weather-container > div {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      padding: 25px 10px;
+      background: linear-gradient(145deg, #323840, #252a30);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #weather-container > div:hover {
+      transform: translateY(-5px);
+      /* box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); */
+    }
+
+    #weather-container > div img {
+      position: relative;
+      height: 30px;
+      width: 30px;
+      margin-bottom: 5px;
+      opacity: 0.9;
+    }
+
+    #weather-container > div::before {
+      content: attr(id);
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
+      font-weight: bold;
+      /* color: #D1B0D5; */
+      color: #ffb74d;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .data-content {
+      font-size: 18px;
+      font-weight: 600;
+      color: #dcdcdc;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      padding: 0 5px;
+    }
+
+    @media (max-width: 600px) {
+      #weather-container {
+        flex-wrap: wrap;
+      }
+
+      #weather-container > div {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 400px) {
+      #weather-container {
+        flex-direction: column;
+      }
+
+      #weather-container > div {
+        width: 100%;
+      }
+    }
+    #weather-container > div .data-content p.extra-info {
+  color:  #D1B0D5!important;
+  font-size: 14px !important;
+  margin: 0;
+}
+
+
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div class="main">
+    <div class="time-container">
+      <h3 id="day"></h3>
+      <h1>
+        <span id="time"></span> <span id="am-pm"></span>
+      </h1>
+      <p id="date"></p>
+    </div>
+    <div id="weather-container">
+      <div id="weather">
+        <img src="images/weather.png" alt="weather">
+        <div class="data-content"></div>
+      </div>
+      <div id="temperature">
+        <img src="images/temperature.png" alt="temperature">
+        <div class="data-content"></div>
+      </div>
+      <div id="aqi">
+        <img src="images/aqi.png" alt="aqi">
+        <div class="data-content"></div>
+      </div>
+      <div id="humidity">
+        <img src="images/humidity.png" alt="humidity">
+        <div class="data-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: {
+          value: 100,
+          density: {
+            enable: true,
+            value_area: 800,
+          },
+        },
+        color: {
+          value: "#ffffff",
+        },
+        shape: {
+          type: "circle",
+        },
+        opacity: {
+          value: 0.5,
+          random: true,
+        },
+        size: {
+          value: 3,
+          random: true,
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+        },
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: {
+            enable: false,
+            mode: "repulse",
+          },
+          onclick: {
+            enable: false,
+            mode: "push",
+          },
+        },
+      },
+      retina_detect: true,
+    });
+  </script>
+</body>
+</html>
